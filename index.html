@@ -8,59 +8,157 @@
   <link rel="icon" type="image/png" href="./resource/img/fav.png">
   <style>
     *{box-sizing:border-box}body{margin:0;font-family:Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;background:#151515;color:#fff}
-    p,span,a,small,strong{font-family:"Segoe UI","Malgun Gothic",sans-serif}.wrap{width:min(1180px,calc(100% - 28px));margin:0 auto}.top{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:22px 0}.brand{display:flex;align-items:center;gap:12px}.brand img{width:56px;height:56px;background:#fff;border-radius:14px;padding:8px}
+    p,span,a,small,strong{font-family:"Segoe UI","Malgun Gothic",sans-serif}.wrap{width:min(1180px,calc(100% - 28px));margin:0 auto}.top{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;padding:22px 0}.brand{display:flex;align-items:center;gap:16px}.brand-mark{display:flex;align-items:center;justify-content:center;width:154px;height:94px;padding:10px 12px;border-radius:22px;background:linear-gradient(180deg,#202020,#121212);border:1px solid rgba(198,255,74,.22);box-shadow:0 12px 30px rgba(0,0,0,.24),inset 0 0 0 1px rgba(255,255,255,.04)}.brand img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(198,255,74,.15))}.brand-text small{display:block;color:#b7b7b7;letter-spacing:.18em}.brand-text strong{display:block;font-size:1.15rem;color:#fff}
     .info{display:flex;gap:10px;flex-wrap:wrap}.info span,.info a{padding:10px 14px;background:#262626;border-radius:999px;color:#ddd;text-decoration:none}
-    .poster{border-radius:34px;overflow:hidden;display:grid;grid-template-columns:1fr .92fr;min-height:720px}.left{padding:34px;background:#ffd400;color:#111;display:flex;flex-direction:column;justify-content:space-between}.left h1{font-size:clamp(4rem,8vw,7rem);line-height:.88;letter-spacing:-.05em;margin:0}.left p{font-size:1.02rem;line-height:1.8;max-width:50ch}.left a{display:inline-block;padding:14px 20px;border-radius:999px;background:#111;color:#fff;text-decoration:none;font-weight:700}
-    .right{position:relative;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.6)),url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1400&q=80") center/cover}.stack{position:absolute;left:22px;right:22px;bottom:22px;display:grid;gap:10px}.stack div,.program,.footer-box{padding:16px 18px;border-radius:18px;background:rgba(17,17,17,.78);backdrop-filter:blur(8px)}
-    .programs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:18px 0}.program strong{display:block;margin-bottom:8px;color:#ffd400}.program p,.footer-box p{margin:0;color:#eee;line-height:1.7}.footer-box{background:#212121;margin-bottom:38px}
+    .poster{border-radius:34px;overflow:hidden;display:grid;grid-template-columns:1fr .92fr;min-height:720px}.left{padding:34px;background:#ffd400;color:#111;display:flex;flex-direction:column;justify-content:space-between}.left h1{font-size:clamp(4rem,8vw,7rem);line-height:.88;letter-spacing:-.05em;margin:0}.left p{font-size:1.02rem;line-height:1.8;max-width:50ch}.cta-group{display:flex;flex-wrap:wrap;gap:12px}.cta-group a{display:inline-flex;align-items:center;gap:10px;padding:14px 20px;border-radius:999px;text-decoration:none;font-weight:700}.cta-group svg{width:18px;height:18px;display:block;flex:0 0 auto}.cta-call{background:#111;color:#fff}.cta-kakao{background:#fee500;color:#111;box-shadow:0 10px 22px rgba(17,17,17,.12)}
+    .right{padding:24px;background:
+      radial-gradient(circle at 18% 18%,rgba(255,212,0,.28),transparent 28%),
+      linear-gradient(160deg,#202020 0%,#121212 55%,#090909 100%);
+      display:grid;grid-template-rows:minmax(360px,1fr) auto;gap:16px}
+    .hero-panel{position:relative;overflow:hidden;border-radius:28px;min-height:420px;background:
+      linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.26)),
+      linear-gradient(90deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,0) 42%,rgba(0,0,0,.14) 100%),
+      url("./resource/img/ems/img8.jpg") 82% top/cover no-repeat;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+    .hero-copy{position:absolute;left:20px;right:20px;bottom:20px;display:grid;gap:10px}
+    .hero-badge{display:inline-flex;align-items:center;width:max-content;padding:8px 12px;border-radius:999px;background:rgba(255,212,0,.92);color:#111;font:700 .82rem/1 "Segoe UI","Malgun Gothic",sans-serif}
+    .hero-copy h2{margin:0;font-size:clamp(2rem,4vw,3.1rem);line-height:.92;letter-spacing:-.05em;color:#fff}
+    .hero-copy p{margin:0;max-width:26ch;color:rgba(255,255,255,.88);line-height:1.65}
+    .detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .detail-card,.footer-box{padding:16px 18px;border-radius:18px;background:rgba(17,17,17,.78);backdrop-filter:blur(8px)}
+    .detail-card strong{display:block;margin-bottom:8px;color:#ffd400}
+    .detail-card p,.program p,.footer-box p{margin:0;color:#eee;line-height:1.7}
+    .feature-photo img,.image-strip img{width:100%;display:block;filter:contrast(1.08) saturate(1.08) brightness(1.03)}
+    .programs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:18px 0}
+    .program{position:relative;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:16px;padding:18px 20px;border-radius:22px;background:linear-gradient(135deg,rgba(255,212,0,.16),rgba(255,255,255,.03) 44%,rgba(17,17,17,.9) 100%);border:1px solid rgba(255,255,255,.08);overflow:hidden}
+    .program::before{content:"";display:block;width:6px;height:42px;border-radius:999px;background:linear-gradient(180deg,#ffe56b 0%,#ffd400 100%);box-shadow:0 0 0 1px rgba(255,255,255,.06)}
+    .program strong{display:block;margin-bottom:6px;color:#fff;font-size:1.08rem}
+    .program p{color:rgba(255,255,255,.76)}
+    .footer-box{background:#212121;margin-bottom:38px}
+    .feature-photo{overflow:hidden;padding:0;background:#111}.feature-photo img{max-height:360px;object-fit:cover;object-position:center 34%}.feature-photo .caption{padding:18px}
+    .pricing{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:16px;margin-bottom:38px}
+    .pricing-intro,.price-card{padding:22px;border-radius:24px;background:linear-gradient(160deg,rgba(255,212,0,.14),rgba(255,255,255,.03) 42%,rgba(17,17,17,.92) 100%);border:1px solid rgba(255,255,255,.08)}
+    .pricing-intro strong,.price-card strong{display:block}
+    .pricing-intro strong{font-size:1.35rem;color:#fff;margin-bottom:10px}
+    .pricing-intro p{color:rgba(255,255,255,.8);line-height:1.75}
+    .price-card small{display:block;margin-bottom:10px;color:#ffd400;letter-spacing:.12em}
+    .price-card strong{font-size:1.2rem;color:#fff;margin-bottom:8px}
+    .price-card p{color:rgba(255,255,255,.75);line-height:1.7}
+    .image-strip{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:38px}.image-card{overflow:hidden;padding:0;background:#111}.image-card img{height:220px;object-fit:cover}.image-strip .image-card:first-child img{object-position:center 18%}.image-strip .image-card:last-child img{object-position:center 28%}.image-card .caption{padding:18px}
     @media(max-width:920px){
-      .top,.poster,.programs{grid-template-columns:1fr}
+      .top,.poster{grid-template-columns:1fr}
       .poster{min-height:auto}
       .left{padding:24px;gap:20px}
       .left h1{font-size:clamp(2.8rem,14vw,4.5rem)}
       .left p{font-size:.96rem;line-height:1.65}
-      .right{min-height:auto;padding:22px}
-      .stack{position:static;left:auto;right:auto;bottom:auto}
+      .brand{gap:12px}
+      .brand-mark{width:124px;height:78px;border-radius:18px}
+      .right{min-height:auto;padding:22px;grid-template-rows:auto}
+      .hero-panel{min-height:360px}
+      .hero-copy h2{font-size:clamp(2rem,10vw,3rem)}
+      .detail-grid{grid-template-columns:1fr}
+      .programs{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr}
+      .image-strip{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="top">
-      <div class="brand"><img src="./resource/img/logo.png" alt="20분의 기적 로고"><div><small>EMS TRAINING STUDIO</small><br><strong>20분의 기적</strong></div></div>
-      <div class="info"><span>암사역 1번출구</span><a href="tel:024812021">문의 02-481-2021</a></div>
+      <div class="brand"><div class="brand-mark"><img src="./resource/img/ems/logo1.png" alt="20분의 기적 EMS Training 로고"></div><div class="brand-text"><small>EMS TRAINING STUDIO</small><strong>20분의 기적</strong></div></div>
+      <div class="info"><span>한국소비자산업평가 스포츠 부문 1위</span><a href="tel:024812021">문의 02-481-2021</a></div>
     </header>
     <main>
       <section class="poster">
         <div class="left">
           <div>
-            <h1>20분.<br>전신.<br>집중.</h1>
-            <p>20분의 기적은 EMS 기반의 1:1 트레이닝으로 단기다이어트, 셀룰라이트감소, 체형교정, 근육&근력강화, 재활운동까지 목표별로 세션을 설계합니다.</p>
+            <h1><div style="margin-bottom: 10px;">20분</div><div style="margin-bottom: 10px;">전신</div>집중</h1>
+            <p style="margin-top:40px;">20분의 기적은 EMS 기반의 트레이닝으로 단기다이어트, 셀룰라이트감소, 체형교정, 근육&근력강화, 재활운동까지 목표별로 세션을 설계합니다.</p>
           </div>
-          <div><a href="tel:024812021">상담 시작</a></div>
+          <div class="cta-group">
+            <a class="cta-call" href="tel:024812021">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+                <path d="M6.6 10.8c1.8 3.5 3.1 4.8 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.3 1 .3 2 .4 3 .4.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.8 21 3 13.2 3 3.6c0-.6.4-1 1-1h3.7c.6 0 1 .4 1 1 0 1 .1 2 .4 3 .1.4 0 .8-.3 1.1l-2.2 2.1Z" fill="currentColor"/>
+              </svg>
+              <span>상담 시작</span>
+            </a>
+            <a class="cta-kakao" href="#">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+                <path d="M12 4C7 4 3 7.2 3 11.1c0 2.5 1.6 4.7 4.1 5.9l-.9 3.3c-.1.3.3.6.6.4l3.9-2.6c.4 0 .8.1 1.3.1 5 0 9-3.2 9-7.1S17 4 12 4Z"/>
+              </svg>
+              <span>카카오톡 문의</span>
+            </a>
+          </div>
         </div>
         <aside class="right">
-          <div class="stack">
-            <div><strong>EMS 트레이닝</strong><p>전기적 근육 자극과 운동 동작을 결합해 전신 활용도를 높이는 방식입니다.</p></div>
-            <div><strong>20분운동의 장점</strong><p>시간 부담은 낮추고 운동 집중도는 높이는 데 적합합니다.</p></div>
-            <div><strong>1:1트레이닝</strong><p>개인 컨디션과 체력에 맞춘 강도 조절이 가능합니다.</p></div>
+          <div class="hero-panel">
+            <div class="hero-copy">
+              <span class="hero-badge">EMS TRAINING</span>
+              <p>짧은 시간 안에 전신 자극과 움직임을 연결해 집중도 높은 세션을 완성합니다.</p>
+            </div>
+          </div>
+          <div class="detail-grid">
+            <div class="detail-card"><strong>EMS 트레이닝</strong><p>전기적 근육 자극과 운동 동작을 결합해 전신 활용도를 높이는 방식입니다.</p></div>
+            <div class="detail-card"><strong>20분운동의 장점</strong><p>시간 부담은 낮추고 운동 집중도는 높이는 데 적합합니다.</p></div>
+            <div class="detail-card"><strong>1:1트레이닝</strong><p>개인 컨디션과 체력에 맞춘 강도 조절이 가능합니다.</p></div>
           </div>
         </aside>
       </section>
       <section class="programs">
-        <article class="program"><strong>단기다이어트</strong><p>감량 목표 중심의 집중 프로그램</p></article>
-        <article class="program"><strong>셀룰라이트감소</strong><p>라인과 탄력 관리</p></article>
-        <article class="program"><strong>체형교정</strong><p>코어와 자세 밸런스 강화</p></article>
-        <article class="program"><strong>근육&근력강화</strong><p>전신 근기능 향상을 위한 세션</p></article>
-        <article class="program"><strong>재활운동</strong><p>회복 단계 대응 프로그램</p></article>
-        <article class="program"><strong>1:1트레이닝</strong><p>모든 세션은 개인 맞춤형으로 진행</p></article>
-        <article class="program"><strong>추천 대상</strong><p>바쁜 직장인, 체형 개선이 필요한 분, 회복 운동이 필요한 분</p></article>
-        <article class="program"><strong>상담 안내</strong><p>암사역 1번출구 | 문의 02-481-2021</p></article>
+        <article class="program"><div><strong>단기다이어트</strong><p>감량 목표 중심의 집중 프로그램</p></div></article>
+        <article class="program"><div><strong>셀룰라이트감소</strong><p>라인과 탄력 관리</p></div></article>
+        <article class="program"><div><strong>체형교정</strong><p>코어와 자세 밸런스 강화</p></div></article>
+        <article class="program"><div><strong>근육&근력강화</strong><p>전신 근기능 향상을 위한 세션</p></div></article>
+        <article class="program"><div><strong>재활운동</strong><p>회복 단계 대응 프로그램</p></div></article>
+        <article class="program"><div><strong>1:1트레이닝</strong><p>모든 세션은 개인 맞춤형으로 진행</p></div></article>
+        <article class="program"><div><strong>추천 대상</strong><p>바쁜 직장인, 체형 개선및 회복 운동이 필요한 분</p></div></article>
+        <article class="program"><div><strong>경험으로 완성하는 트레이닝</strong><p>15년차 대표자가 직접 지도</p></div></article>
       </section>
       <div class="footer-box"><strong>20분의 기적 안내</strong><p>EMS는 Electrical Muscle Stimulation의 약자로, 짧은 시간 안에 전신 근육군을 효율적으로 활용할 수 있도록 돕는 트레이닝 방식입니다.</p></div>
-      <div class="footer-box">
+      <section class="image-strip">
+        <div class="footer-box image-card">
+          <img src="./resource/img/ems/img2.jpg" alt="20분의 기적 EMS 트레이닝 공간">
+          <div class="caption">
+            <strong>스튜디오 공간</strong>
+            <p>정돈된 공간에서 개인별 컨디션과 운동 목적에 맞춰 집중도 있게 세션을 진행합니다.</p>
+          </div>
+        </div>
+        <div class="footer-box image-card">
+          <img src="./resource/img/ems/img10.jpg" alt="20분의 기적 EMS 운동 이미지">
+          <div class="caption">
+            <strong>집중 세션</strong>
+            <p>짧은 시간 안에 전신 자극과 움직임을 연결해 운동 효율을 끌어올립니다.</p>
+          </div>
+        </div>
+      </section>
+      <div class="footer-box feature-photo">
+        <img src="./resource/img/ems/aiimg.png" alt="20분의 기적 EMS 세션 이미지">
+        <div class="caption">
+          <strong>현장 분위기</strong>
+          <p>운동이 진행되는 실제 분위기와 공간 느낌을 미리 편하게 확인해보실 수 있습니다.</p>
+        </div>
+      </div>
+      <section class="pricing">
+        <div class="pricing-intro">
+          <strong>상담 기반 이용 안내</strong>
+          <p>20분의 기적은 모든 회원에게 동일한 구성을 권하지 않습니다. 운동 목적, 현재 컨디션, 체형 고민, 주당 가능 횟수를 먼저 확인한 뒤 가장 알맞은 프로그램과 이용 방향을 제안합니다.</p>
+        </div>
+        <article class="price-card">
+          <small>STEP 01</small>
+          <strong>체험과 상담 먼저 진행</strong>
+          <p>처음 방문 시 목표와 운동 이력을 확인하고, 현재 몸 상태에 맞는 진행 방식부터 함께 정리합니다.</p>
+        </article>
+        <article class="price-card">
+          <small>STEP 02</small>
+          <strong>상담 후 맞춤 구성 안내</strong>
+          <p>감량, 체형교정, 근력강화, 재활 목적에 따라 추천 프로그램과 이용 안내를 개인별로 맞춰 설명해드립니다.</p>
+        </article>
+      </section>
+      <div class="footer-box">  
         <strong>오시는 길</strong>
-        <p style="margin-bottom:14px">암사역 1번출구에서 가까운 20분의 기적 위치를 지도에서 바로 확인할 수 있습니다.</p>
+        <p style="margin-bodttom:14px">지하철 8호선 암사역 1번출구에서 266m, 걸어서 4분 거리에 위치해 있습니다.</p>
         <div style="border-radius:16px;overflow:hidden;border:1px solid #3b3b3b">
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d790.7771405803569!2d127.1280063696467!3d37.55250596147406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cb00978443f97%3A0xdc6a174e84b4473a!2zMjDrtoTsnZjquLDsoIE!5e0!3m2!1sko!2skr!4v1772862294262!5m2!1sko!2skr" width="600" height="420" style="border:0;width:100%;display:block" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
